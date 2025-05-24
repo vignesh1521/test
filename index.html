@@ -13,9 +13,6 @@
 
     fetch('https://auth.magiceden.io/api/v0/sdk/c1314b5b-ece8-4b4f-a879-3894dda364e4/users', {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
     })
       .then(response => response.json())
       .then(data => console.log(data))
