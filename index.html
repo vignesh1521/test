@@ -12,15 +12,10 @@
   <script>
 
     fetch('https://auth.magiceden.io/api/v0/sdk/c1314b5b-ece8-4b4f-a879-3894dda364e4/users', {
-      method: 'PUT',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        // Add your payload data here
-        // Example:
-        username: 'vignesh1521dfee'
-      })
+      }
     })
       .then(response => response.json())
       .then(data => console.log(data))
