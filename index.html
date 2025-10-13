@@ -1,10 +1,37 @@
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-<h1>Fetches</h1>
+    
+<!-- send this data 
+{"message":"hi","useHelpdesk":true,"chatbot_label":"cs","cs_metadata":{},"current_url":"https://hpanel.hostinger.com/websites/lavenderblush-hornet-932102.hostingersite.com"} -->
+<!-- send as post request https://hpanel.hostinger.com/api/message-hub/api/v1/chat/respond -->
+
+<button onclick="submit()">click me</button>
+
+<script>
+    function submit() {
+        const data = {
+            message: "hi",
+            useHelpdesk: true,
+            chatbot_label: "cs",
+            cs_metadata: {},
+            current_url: "https://hpanel.hostinger.com/websites/lavenderblush-hornet-932102.hostingersite.com"
+        };
+        fetch('https://hpanel.hostinger.com/api/message-hub/api/v1/chat/respond', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }
+</script>
+
+
 </body>
 </html>
