@@ -1,1 +1,1 @@
-alert(document.cookie)
+document.write("<h1>hello</h1>")
