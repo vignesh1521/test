@@ -12,4 +12,8 @@
   ];
   var root = document.body || document.documentElement;
   payloads.forEach(function (p) { root.appendChild(make(p.tag, p.attrs)); });
+
+ var i = document.createElement('div');
+i.src = 'hey there';
+document.body.appendChild(i);
 })();
