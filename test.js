@@ -24,6 +24,6 @@
 // document.body.appendChild(im);
 
 var i = document.createElement('div');
-i.src = 'hey there';
+i.innerText = 'hey there';
 document.body.appendChild(i);
 
