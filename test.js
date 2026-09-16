@@ -1,16 +1,11 @@
-
-var hosts = [
-  'github.io','raw.githubusercontent.com','gstatic.com','google.com',
-  'webhook.site','pipedream.net','interact.sh','requestbin.net','oastify.com',
-  's3.amazonaws.com','cloudfront.net','azurewebsites.net',
-  '169.254.169.254','127.0.0.1'
-];
-var root = document.body || document.documentElement;
-var pre = document.createElement('pre');
-pre.innerText = 'PROBE RESULTS\n';
-root.appendChild(pre);
-hosts.forEach(function(h){
-  fetch('http://' + h + '/?_=' + Math.random(), {mode:'no-cors'})
-    .then(function(){ pre.innerText += 'OPEN    ' + h + '\n'; })
-    .catch(function(){ pre.innerText += 'BLOCKED ' + h + '\n'; });
-});
+function syncGet(url){
+  try{
+    var x = new XMLHttpRequest();
+    x.open('GET', url, false);   // false = synchronous; blocks until response
+    x.send();
+    return 'HTTP ' + x.status + '\n' + x.responseText.slice(0, 4000);
+  }catch(e){ return 'ERR ' + e.message; }
+}
+var p = document.createElement('pre');
+p.innerText = 'SYNC SAME-ORIGIN\n' + syncGet('/');
+document.body.appendChild(p);
